@@ -1,50 +1,53 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report
+Version Change: 0.0.0 -> 1.0.0
+Modified Principles: None -> Stack, State, Persistence, Design System
+Added Sections: Core Principles, Technical Stack & Architecture, Development Workflow
+Removed Sections: None
+Modified Templates:
+  - .specify/templates/plan-template.md: ✅ updated
+  - .specify/templates/spec-template.md: ✅ updated
+  - .specify/templates/tasks-template.md: ✅ updated
+  - .specify/templates/checklist-template.md: ✅ updated
+TODOs: None
+-->
+
+# TodoApp Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity in State Management
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+State must be managed using built-in React hooks (`useState`, `React Context`) unless complex requirements force an abstraction. External state management libraries (like Redux, Zustand) MUST NOT be introduced without strict justification.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Local-First Persistence
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+All user data MUST initially be persisted in `localStorage`. The architecture SHOULD allow easy migration to an external database in the future, but the current immediate constraint is local execution.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Aesthetic and Minimalist Design
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+The user interface MUST adhere to a "clean minimalist UI" philosophy. Dark mode MUST be the default theme. Components should favor ample whitespace, clear typography, and minimalistic structural boundaries.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Component-Driven UI
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+All visual elements MUST be constructed primarily with Tailwind CSS utility classes and Lucide Icons for iconography. Custom CSS should be avoided unless absolutely necessary for complex animations or overrides not solvable with Tailwind.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Technical Stack & Architecture
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **Iconography**: Lucide Icons
+- **State Management**: React `useState`
+- **Data Persistence**: `localStorage`
+
+## Development Workflow
+
+1. Functionality precedes abstraction. Get it working with basic React functionality before generalizing.
+2. UI components must be responsive and respect the dark mode default setting upon initial load.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution supersedes all other documentation.
+Amendments require documentation, reasoning, and version bumps.
+All PRs and modifications must verify compliance against these rules.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-03 | **Last Amended**: 2026-03-03
