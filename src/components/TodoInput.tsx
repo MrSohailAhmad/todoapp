@@ -28,7 +28,7 @@ export function TodoInput({ onAdd }: TodoInputProps) {
             <button
                 type="submit"
                 disabled={!value.trim()}
-                className="px-4 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+                className="px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-500 disabled:opacity-50 disabled:bg-emerald-600 disabled:cursor-not-allowed transition-all flex items-center gap-2"
                 aria-label="Add task"
             >
                 <Plus size={20} />

@@ -11,11 +11,14 @@ interface TodoItemProps {
 }
 
 export function TodoItem({ todo, onToggle, onDelete, provided, isDragDisabled }: TodoItemProps) {
+    const isGoal = todo.text.toLowerCase().includes('goal');
+
     return (
         <li
             ref={provided?.innerRef}
             {...provided?.draggableProps}
-            className={`flex items-center gap-3 p-4 mb-2 bg-zinc-900 border border-zinc-800 rounded-lg group transition-all hover:bg-zinc-800/80 ${!isDragDisabled && provided ? 'cursor-grab hover:shadow-md active:cursor-grabbing active:scale-[0.99] active:shadow-lg' : ''
+            className={`flex items-center gap-3 p-4 mb-2 border rounded-lg group transition-all hover:bg-zinc-800/80 ${isGoal ? 'bg-indigo-950 border-indigo-800' : 'bg-zinc-900 border-zinc-800'
+                } ${!isDragDisabled && provided ? 'cursor-grab hover:shadow-md active:cursor-grabbing active:scale-[0.99] active:shadow-lg' : ''
                 }`}
         >
             {provided && !isDragDisabled && (
@@ -48,7 +51,7 @@ export function TodoItem({ todo, onToggle, onDelete, provided, isDragDisabled }:
 
             <button
                 onClick={() => onDelete(todo.id)}
-                className="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-500 transition-all focus:outline-none focus:ring-2 focus:ring-red-500 rounded p-1 focus:opacity-100"
+                className="opacity-0 group-hover:opacity-100 bg-red-600 hover:bg-red-500 text-white transition-all focus:outline-none focus:ring-2 focus:ring-red-500 rounded p-1.5 focus:opacity-100"
                 aria-label="Delete task"
             >
                 <Trash2 size={20} />
